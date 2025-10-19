@@ -246,14 +246,14 @@ body {
     display: none;
 }
 
-/* Card Mockup Styling */
+/* Card Mockup Styling - Original Brand Colors */
 .card-mockup-bg {
-    background: linear-gradient(135deg, #1a1f2e, #2a3142);
+    background: linear-gradient(135deg, #6B21A8, #EA580C, #2563EB);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .app-main-card-bg {
-    background: linear-gradient(135deg, #00aaff, #0066cc);
+    background: linear-gradient(135deg, #EA580C, #6B21A8);
 }
 
 /* Additional professional touches */
