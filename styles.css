@@ -324,6 +324,7 @@ body {
 .slide-title {
     @apply font-bold text-white text-center;
     font-size: 72px;
+    line-height: 1.1;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     letter-spacing: -0.02em;
 }
@@ -476,11 +477,7 @@ body {
     text-shadow: 0 6px 20px rgba(0, 170, 255, 0.4);
 }
 
-/* Improve readability - Duplicate to preserve functionality */
-.slide-title {
-    line-height: 1.1;
-}
-
+/* Improve readability */
 .slide-subtitle {
     line-height: 1.5;
 }
