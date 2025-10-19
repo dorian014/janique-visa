@@ -322,13 +322,13 @@ body {
 }
 
 .slide-title {
-    @apply text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center;
+    @apply text-9xl font-bold text-white text-center;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     letter-spacing: -0.02em;
 }
 
 .slide-subtitle {
-    @apply text-xl md:text-2xl lg:text-3xl text-gray-400 mt-6 max-w-4xl text-center;
+    @apply text-3xl text-gray-400 mt-6 max-w-4xl text-center;
     line-height: 1.4;
 }
 
