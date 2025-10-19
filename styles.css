@@ -323,7 +323,7 @@ body {
 
 .slide-title {
     @apply font-bold text-white text-center;
-    font-size: 130px;
+    font-size: 100px;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     letter-spacing: -0.02em;
 }
