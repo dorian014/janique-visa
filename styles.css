@@ -18,11 +18,19 @@ body {
     background-size: cover;
 }
 
+/* Professional Card Styling */
 .card-bg {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+.card-bg:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
 }
 
 .brand-gradient-text {
@@ -38,6 +46,7 @@ body {
     margin: 1rem auto;
 }
 
+/* Slide Transitions - Professional */
 .slide {
     position: absolute;
     top: 0;
@@ -49,13 +58,93 @@ body {
     justify-content: center;
     align-items: center;
     padding: 4rem 1.5rem;
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 1;
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .slide.hidden {
     opacity: 0;
-    transform: scale(0.95);
     pointer-events: none;
+}
+
+/* Direction-based transitions */
+.slide.slide-out-left {
+    transform: translateX(-30px);
+    opacity: 0;
+}
+
+.slide.slide-out-right {
+    transform: translateX(30px);
+    opacity: 0;
+}
+
+.slide.slide-in-left {
+    animation: slideInLeft 0.4s ease forwards;
+}
+
+.slide.slide-in-right {
+    animation: slideInRight 0.4s ease forwards;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Content animations */
+.slide:not(.hidden) .slide-title {
+    animation: fadeInUp 0.6s ease 0.1s both;
+}
+
+.slide:not(.hidden) .slide-subtitle {
+    animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.slide:not(.hidden) .section-divider {
+    animation: expandWidth 0.6s ease 0.3s both;
+}
+
+.slide:not(.hidden) .card-bg {
+    animation: fadeInUp 0.6s ease 0.3s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 100px;
+        opacity: 1;
+    }
 }
 
 .slide-title {
@@ -66,135 +155,144 @@ body {
     @apply text-lg md:text-xl text-gray-400 mt-4 max-w-3xl text-center;
 }
 
-/* Professional Navigation Bar */
+/* Minimal Professional Navigation */
 .navigation-bar {
     position: fixed;
-    bottom: 40px;
-    right: 40px;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 20px;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 12px 20px;
-    border-radius: 60px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    gap: 24px;
+    background: rgba(15, 20, 30, 0.95);
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     z-index: 50;
-    transition: all 0.3s ease;
 }
 
-.navigation-bar:hover {
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 12px 40px rgba(0, 170, 255, 0.2);
-}
-
-/* Arrow Buttons */
+/* Arrow Buttons - Minimal */
 .nav-arrow-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 0.2s ease;
+    padding: 0;
 }
 
 .nav-arrow-btn:hover:not(:disabled) {
-    background: rgba(0, 170, 255, 0.2);
-    border-color: #00aaff;
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .nav-arrow-btn:disabled {
-    opacity: 0.3;
+    opacity: 0.2;
     cursor: not-allowed;
 }
 
 .nav-arrow-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
 }
 
-/* Progress Dots */
+/* Progress Indicator - Thin Line */
 .progress-dots {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin: 0 10px;
+    gap: 3px;
+    height: 2px;
 }
 
 .progress-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
+    width: 20px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
     cursor: pointer;
     transition: all 0.3s ease;
-    position: relative;
+    border: none;
+    padding: 0;
 }
 
 .progress-dot:hover {
-    background: rgba(255, 255, 255, 0.5);
-    transform: scale(1.3);
+    background: rgba(255, 255, 255, 0.4);
 }
 
 .progress-dot.active {
-    background: linear-gradient(135deg, #00aaff, #f7b600);
-    width: 10px;
-    height: 10px;
-    box-shadow: 0 0 15px rgba(0, 170, 255, 0.6);
+    background: #00aaff;
+    height: 3px;
 }
 
-/* Slide Counter */
+/* Slide Counter - Clean */
 .slide-counter {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 500;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
     letter-spacing: 0.5px;
-    margin-left: 10px;
-}
-
-.counter-divider {
-    margin: 0 4px;
-    opacity: 0.5;
+    font-family: 'Poppins', sans-serif;
 }
 
 #current-slide {
-    font-weight: 700;
-    color: #00aaff;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
 }
 
-/* Keyboard Hint */
+/* Remove keyboard hint - too cluttered */
 .keyboard-hint {
-    position: fixed;
-    bottom: 10px;
-    right: 40px;
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.4);
-    z-index: 49;
-    transition: opacity 0.3s ease;
+    display: none;
 }
 
-.keyboard-hint kbd {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2px 6px;
-    border-radius: 4px;
-    margin: 0 2px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    font-family: monospace;
-}
-
+/* Card Mockup Styling */
 .card-mockup-bg {
-    background: linear-gradient(135deg, #6B21A8, #EA580C, #2563EB);
+    background: linear-gradient(135deg, #1a1f2e, #2a3142);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .app-main-card-bg {
-     background: linear-gradient(135deg, #EA580C, #6B21A8);
+    background: linear-gradient(135deg, #00aaff, #0066cc);
+}
+
+/* Additional professional touches */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a0e1a;
+    color: #e0e0e0;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Improve readability */
+.slide-title {
+    @apply text-3xl md:text-5xl font-bold text-white text-center;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.slide-subtitle {
+    @apply text-lg md:text-xl text-gray-400 mt-4 max-w-3xl text-center;
+    line-height: 1.6;
+}
+
+/* Better spacing for grids */
+.grid {
+    gap: 1.5rem;
+}
+
+/* Professional button styling */
+button:focus {
+    outline: none;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }

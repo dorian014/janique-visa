@@ -34,14 +34,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Show specific slide
-    function showSlide(index) {
+    // Show specific slide with direction
+    function showSlide(index, direction = 'none') {
         // Ensure index is within bounds
         if (index < 0 || index >= slides.length) return;
 
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('hidden', i !== index);
+        const previousSlide = slides[currentSlide];
+        const nextSlide = slides[index];
+
+        // Remove all transition classes
+        slides.forEach(slide => {
+            slide.classList.remove('slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right');
         });
+
+        if (direction === 'forward') {
+            previousSlide?.classList.add('slide-out-left');
+            nextSlide.classList.remove('hidden');
+            nextSlide.classList.add('slide-in-right');
+        } else if (direction === 'backward') {
+            previousSlide?.classList.add('slide-out-right');
+            nextSlide.classList.remove('hidden');
+            nextSlide.classList.add('slide-in-left');
+        } else {
+            // Simple fade for dot navigation
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('hidden', i !== index);
+            });
+        }
+
+        // Hide previous slide after animation
+        setTimeout(() => {
+            slides.forEach((slide, i) => {
+                if (i !== index) {
+                    slide.classList.add('hidden');
+                }
+            });
+        }, 400);
 
         // Update button states
         prevButton.disabled = index === 0;
@@ -61,14 +89,14 @@ document.addEventListener('DOMContentLoaded', () => {
     nextButton.addEventListener('click', () => {
         if (currentSlide < slides.length - 1) {
             currentSlide++;
-            showSlide(currentSlide);
+            showSlide(currentSlide, 'forward');
         }
     });
 
     prevButton.addEventListener('click', () => {
         if (currentSlide > 0) {
             currentSlide--;
-            showSlide(currentSlide);
+            showSlide(currentSlide, 'backward');
         }
     });
 
