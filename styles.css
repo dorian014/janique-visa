@@ -322,7 +322,7 @@ body {
 }
 
 .slide-title {
-    @apply text-4xl md:text-6xl lg:text-7xl font-bold text-white text-center;
+    @apply text-6xl md:text-8xl lg:text-9xl font-bold text-white text-center;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     letter-spacing: -0.02em;
 }
