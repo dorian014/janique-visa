@@ -67,7 +67,21 @@ body {
 }
 
 .nav-button {
-    @apply fixed bottom-8 px-6 py-3 bg-white/10 border border-white/20 rounded-lg text-white font-semibold backdrop-blur-sm transition-all duration-300 hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed z-50;
+    @apply fixed bottom-8 w-12 h-12 bg-white/10 border border-white/20 rounded-full text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:scale-110 hover:border-white/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 z-50 flex items-center justify-center;
+}
+
+.nav-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.nav-button:hover:not(:disabled) {
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
+}
+
+/* Slide counter */
+.slide-counter {
+    @apply fixed bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 text-sm font-medium z-50;
 }
 
 .card-mockup-bg {
