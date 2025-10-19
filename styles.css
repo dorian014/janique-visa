@@ -1,0 +1,79 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a0e1a;
+    color: #e0e0e0;
+    overflow: hidden; /* Prevent scrolling the body */
+}
+
+.gotham-brand {
+    color: #00aaff;
+}
+
+.visa-brand {
+    color: #f7b600;
+}
+
+.hero-bg {
+    background: linear-gradient(rgba(10, 14, 26, 0.85), rgba(10, 14, 26, 1)), url('https://images.unsplash.com/photo-1530789253388-582c481c54b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%DD&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+    background-size: cover;
+}
+
+.card-bg {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.brand-gradient-text {
+    background: linear-gradient(90deg, #00aaff, #f7b600);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-divider {
+    height: 2px;
+    width: 100px;
+    background: linear-gradient(90deg, #00aaff, #f7b600);
+    margin: 1rem auto;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 1.5rem;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.slide.hidden {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+.slide-title {
+    @apply text-3xl md:text-5xl font-bold text-white text-center;
+}
+
+.slide-subtitle {
+    @apply text-lg md:text-xl text-gray-400 mt-4 max-w-3xl text-center;
+}
+
+.nav-button {
+    @apply fixed bottom-8 px-6 py-3 bg-white/10 border border-white/20 rounded-lg text-white font-semibold backdrop-blur-sm transition-all duration-300 hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed z-50;
+}
+
+.card-mockup-bg {
+    background: linear-gradient(135deg, #6B21A8, #EA580C, #2563EB);
+}
+
+.app-main-card-bg {
+     background: linear-gradient(135deg, #EA580C, #6B21A8);
+}
