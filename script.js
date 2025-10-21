@@ -76,32 +76,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Remove all transition classes
         slides.forEach(slide => {
-            slide.classList.remove('slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right');
+            slide.classList.remove('slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right', 'fade-in', 'fade-out');
         });
 
         if (direction === 'forward') {
+            // Scale out to the left, scale in from the right
             previousSlide?.classList.add('slide-out-left');
             nextSlide.classList.remove('hidden');
             nextSlide.classList.add('slide-in-right');
         } else if (direction === 'backward') {
+            // Scale out to the right, scale in from the left
             previousSlide?.classList.add('slide-out-right');
             nextSlide.classList.remove('hidden');
             nextSlide.classList.add('slide-in-left');
         } else {
-            // Simple fade for dot navigation
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('hidden', i !== index);
-            });
+            // Crossfade for dot navigation
+            if (previousSlide && previousSlide !== nextSlide) {
+                previousSlide.classList.add('fade-out');
+            }
+            nextSlide.classList.remove('hidden');
+            nextSlide.classList.add('fade-in');
         }
 
-        // Hide previous slide after animation
+        // Hide previous slide after animation completes
         setTimeout(() => {
             slides.forEach((slide, i) => {
                 if (i !== index) {
                     slide.classList.add('hidden');
+                    slide.classList.remove('fade-out', 'slide-out-left', 'slide-out-right');
                 }
             });
-        }, 400);
+        }, 600);
 
         // Update button states
         prevButton.disabled = index === 0;
