@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     slide.classList.remove('fade-out', 'slide-out-left', 'slide-out-right');
                 }
             });
-        }, 900); // Match the liquid morph animation duration
+        }, 600); // Match the subtle transition animation duration
 
         // Update button states
         prevButton.disabled = index === 0;
