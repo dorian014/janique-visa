@@ -243,13 +243,46 @@ body::before {
     transition: transform 0.6s ease;
 }
 
-/* Opportunity card - enhanced special glow */
-.opportunity-card {
+/* Problem card - danger theme */
+.problem-card {
+    background: linear-gradient(135deg,
+        rgba(239, 68, 68, 0.03) 0%,
+        rgba(255, 255, 255, 0.02) 100%);
     border: 2px solid transparent;
     background-clip: padding-box;
     position: relative;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2),
-                0 0 50px rgba(247, 182, 0, 0.1);
+                0 0 40px rgba(239, 68, 68, 0.1);
+}
+
+.problem-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 1rem;
+    padding: 2px;
+    background: linear-gradient(45deg, #ef4444, #f97316);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.2;
+    transition: opacity 0.4s ease;
+}
+
+.problem-card:hover::before {
+    opacity: 0.5;
+}
+
+/* Opportunity card - success theme */
+.opportunity-card {
+    background: linear-gradient(135deg,
+        rgba(34, 197, 94, 0.03) 0%,
+        rgba(255, 255, 255, 0.02) 100%);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2),
+                0 0 40px rgba(34, 197, 94, 0.1);
 }
 
 .opportunity-card::before {
@@ -258,22 +291,32 @@ body::before {
     inset: -2px;
     border-radius: 1rem;
     padding: 2px;
-    background: linear-gradient(45deg, #00aaff, #f7b600);
+    background: linear-gradient(45deg, #22c55e, #00aaff);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    opacity: 0.3;
+    opacity: 0.2;
     transition: opacity 0.4s ease;
 }
 
 .opportunity-card:hover::before {
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
-.opportunity-card:hover {
+.opportunity-card:hover,
+.problem-card:hover {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
-                0 0 80px rgba(247, 182, 0, 0.2);
+                0 0 60px rgba(var(--card-glow-color, 255, 255, 255), 0.15);
 }
+
+/* Icon floating animation */
+.icon-float {
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+.icon-float:nth-child(2) { animation-delay: 0.5s; }
+.icon-float:nth-child(3) { animation-delay: 1s; }
+.icon-float:nth-child(4) { animation-delay: 1.5s; }
 
 /* Marketing cards - number bounce */
 .marketing-card .card-number {
@@ -494,10 +537,10 @@ body::before {
     }
 }
 
-/* Slide Transitions - Page Turn Effect */
+/* Slide Transitions - Liquid Morph Effect */
 .presentation-container {
-    perspective: 2000px;
-    transform-style: preserve-3d;
+    position: relative;
+    overflow: hidden;
 }
 
 .slide {
@@ -512,138 +555,146 @@ body::before {
     align-items: center;
     padding: 4rem 1.5rem;
     opacity: 1;
-    transform-style: preserve-3d;
     transform-origin: center center;
-    backface-visibility: hidden;
-    transform: rotateY(0deg) translateZ(0);
+    transform: scale(1) translateZ(0);
+    border-radius: 0;
+    transition: all 0.3s ease;
 }
 
 .slide.hidden {
     opacity: 0;
     pointer-events: none;
-    transform: rotateY(0deg);
+    transform: scale(0.9);
 }
 
-/* Page Turn Animations - Forward Navigation */
-.slide.slide-out-left {
-    animation: pageTurnOutLeft 0.8s cubic-bezier(0.45, 0, 0.55, 1) forwards;
-    transform-origin: left center;
-}
-
-.slide.slide-in-right {
-    animation: pageTurnInRight 0.8s cubic-bezier(0.45, 0, 0.55, 1) forwards;
-    transform-origin: right center;
-}
-
-/* Page Turn Animations - Backward Navigation */
+/* Liquid Morph Animations - Forward/Backward Navigation */
+.slide.slide-out-left,
 .slide.slide-out-right {
-    animation: pageTurnOutRight 0.8s cubic-bezier(0.45, 0, 0.55, 1) forwards;
-    transform-origin: right center;
+    animation: liquidMorphOut 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
-.slide.slide-in-left {
-    animation: pageTurnInLeft 0.8s cubic-bezier(0.45, 0, 0.55, 1) forwards;
-    transform-origin: left center;
+.slide.slide-in-left,
+.slide.slide-in-right {
+    animation: liquidMorphIn 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
-/* Forward Page Turn - Outgoing slide turns like left page */
-@keyframes pageTurnOutLeft {
+/* Liquid Morph Out - Current slide liquifies */
+@keyframes liquidMorphOut {
     0% {
-        transform: rotateY(0deg);
+        border-radius: 0;
+        transform: scale(1) rotate(0deg);
         opacity: 1;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        filter: blur(0px);
     }
-    30% {
-        box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+    20% {
+        border-radius: 20% 40% 60% 30% / 30% 60% 40% 20%;
+        transform: scale(1.05) rotate(1deg);
+    }
+    40% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: scale(0.95) rotate(-1deg);
+        filter: blur(2px);
+    }
+    60% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        transform: scale(1.1) rotate(2deg);
+        opacity: 0.6;
+        filter: blur(4px);
+    }
+    80% {
+        border-radius: 70% 30% 50% 50% / 30% 70% 30% 70%;
+        transform: scale(0.8) rotate(-2deg);
+        opacity: 0.3;
+        filter: blur(6px);
     }
     100% {
-        transform: rotateY(-180deg);
+        border-radius: 100%;
+        transform: scale(0.5) rotate(0deg);
         opacity: 0;
-        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        filter: blur(10px);
     }
 }
 
-/* Forward Page Turn - Incoming slide appears like right page */
-@keyframes pageTurnInRight {
+/* Liquid Morph In - New slide emerges from liquid */
+@keyframes liquidMorphIn {
     0% {
-        transform: rotateY(180deg);
+        border-radius: 100%;
+        transform: scale(0.5) rotate(0deg);
         opacity: 0;
-        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        filter: blur(10px);
     }
-    30% {
+    20% {
+        border-radius: 70% 30% 50% 50% / 30% 70% 30% 70%;
+        transform: scale(0.8) rotate(-2deg);
+        opacity: 0.3;
+        filter: blur(6px);
+    }
+    40% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        transform: scale(1.1) rotate(2deg);
+        opacity: 0.6;
+        filter: blur(4px);
+    }
+    60% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: scale(0.95) rotate(-1deg);
+        filter: blur(2px);
+    }
+    80% {
+        border-radius: 20% 40% 60% 30% / 30% 60% 40% 20%;
+        transform: scale(1.05) rotate(1deg);
         opacity: 1;
-        box-shadow: -5px 5px 30px rgba(0, 0, 0, 0.3);
     }
     100% {
-        transform: rotateY(0deg);
+        border-radius: 0;
+        transform: scale(1) rotate(0deg);
         opacity: 1;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        filter: blur(0px);
     }
 }
 
-/* Backward Page Turn - Outgoing slide turns like right page */
-@keyframes pageTurnOutRight {
-    0% {
-        transform: rotateY(0deg);
-        opacity: 1;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    }
-    30% {
-        box-shadow: -5px 5px 30px rgba(0, 0, 0, 0.3);
-    }
-    100% {
-        transform: rotateY(180deg);
-        opacity: 0;
-        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    }
-}
-
-/* Backward Page Turn - Incoming slide appears like left page */
-@keyframes pageTurnInLeft {
-    0% {
-        transform: rotateY(-180deg);
-        opacity: 0;
-        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    }
-    30% {
-        opacity: 1;
-        box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
-    }
-    100% {
-        transform: rotateY(0deg);
-        opacity: 1;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    }
-}
-
-/* Crossfade for dot navigation - simpler transition */
+/* Crossfade for dot navigation - liquid bubble transition */
 .slide.fade-in {
-    animation: simpleFadeIn 0.5s ease-out forwards;
+    animation: bubbleFadeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .slide.fade-out {
-    animation: simpleFadeOut 0.4s ease-in forwards;
+    animation: bubbleFadeOut 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
 }
 
-@keyframes simpleFadeIn {
+@keyframes bubbleFadeIn {
     from {
         opacity: 0;
-        transform: rotateY(90deg);
+        transform: scale(0.7);
+        border-radius: 50%;
+        filter: blur(8px);
+    }
+    50% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     }
     to {
         opacity: 1;
-        transform: rotateY(0deg);
+        transform: scale(1);
+        border-radius: 0;
+        filter: blur(0);
     }
 }
 
-@keyframes simpleFadeOut {
+@keyframes bubbleFadeOut {
     from {
         opacity: 1;
-        transform: rotateY(0deg);
+        transform: scale(1);
+        border-radius: 0;
+        filter: blur(0);
+    }
+    50% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     }
     to {
         opacity: 0;
-        transform: rotateY(-90deg);
+        transform: scale(1.3);
+        border-radius: 50%;
+        filter: blur(8px);
     }
 }
 
