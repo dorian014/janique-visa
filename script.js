@@ -238,41 +238,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Counter animations for KPIs slide
         if (currentSlideElement.id === 'marketing-kpis') {
-            const counters = [
-                { selector: 'strong:contains("250K")', value: 250000 },
-                { selector: 'strong:contains("35%")', value: 35 },
-                { selector: 'strong:contains("75%")', value: 75 },
-                { selector: 'strong:contains("20")', value: 20 }
-            ];
+            const kpiCounters = currentSlideElement.querySelectorAll('.kpi-counter');
+            kpiCounters.forEach((counter, i) => {
+                const target = parseInt(counter.dataset.target);
+                const suffix = counter.dataset.suffix || '';
 
-            // Find and animate counters
-            const listItems = currentSlideElement.querySelectorAll('li');
-            listItems.forEach(li => {
-                const text = li.textContent;
-                if (text.includes('250K')) {
-                    const strong = li.querySelector('strong');
-                    if (strong) {
-                        strong.textContent = '0';
-                        setTimeout(() => animateCounter(strong, 0, 250, 2000), 500);
-                        setTimeout(() => strong.textContent += 'K new app downloads', 2500);
+                // Reset to 0
+                counter.textContent = '0';
+
+                setTimeout(() => {
+                    const duration = 1500;
+                    const startTime = Date.now();
+
+                    function updateCounter() {
+                        const elapsed = Date.now() - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+
+                        // Easing function for smooth animation
+                        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                        const current = Math.floor(target * easeOutQuart);
+
+                        counter.textContent = current + suffix;
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target + suffix;
+                        }
                     }
-                } else if (text.includes('+35%')) {
-                    const strong = li.querySelector('strong');
-                    if (strong) {
-                        strong.textContent = '+0%';
-                        setTimeout(() => {
-                            const span = document.createElement('span');
-                            span.textContent = '+';
-                            strong.textContent = '';
-                            strong.appendChild(span);
-                            const num = document.createElement('span');
-                            num.textContent = '0';
-                            strong.appendChild(num);
-                            animateCounter(num, 0, 35, 1500);
-                            setTimeout(() => strong.textContent = '+35%', 1600);
-                        }, 600);
-                    }
-                }
+                    updateCounter();
+                }, 300 + (i * 150)); // Stagger the animations
             });
         }
     }

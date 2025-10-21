@@ -1254,3 +1254,63 @@ button:focus {
 .glass-pillar-card:nth-child(2) { animation-delay: 0.2s; }
 .glass-pillar-card:nth-child(3) { animation-delay: 0.3s; }
 .glass-pillar-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Glass pillar card with problem card - red glow */
+.glass-pillar-card.problem-card {
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(239, 68, 68, 0.2),
+        inset 0 0 32px rgba(255, 255, 255, 0.02);
+}
+
+.glass-pillar-card.problem-card:hover {
+    box-shadow:
+        0 20px 48px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(239, 68, 68, 0.3),
+        inset 0 0 32px rgba(255, 255, 255, 0.03);
+}
+
+.glass-pillar-card.problem-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.15), rgba(255, 255, 255, 0.1), rgba(239, 68, 68, 0.15), transparent);
+    transition: left 0.6s ease;
+}
+
+.glass-pillar-card.problem-card:hover::before {
+    left: 100%;
+}
+
+/* Glass pillar card with opportunity card - green glow */
+.glass-pillar-card.opportunity-card {
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(34, 197, 94, 0.2),
+        inset 0 0 32px rgba(255, 255, 255, 0.02);
+}
+
+.glass-pillar-card.opportunity-card:hover {
+    box-shadow:
+        0 20px 48px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(34, 197, 94, 0.3),
+        inset 0 0 32px rgba(255, 255, 255, 0.03);
+}
+
+.glass-pillar-card.opportunity-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.15), rgba(255, 255, 255, 0.1), rgba(34, 197, 94, 0.15), transparent);
+    transition: left 0.6s ease;
+}
+
+.glass-pillar-card.opportunity-card:hover::before {
+    left: 100%;
+}
