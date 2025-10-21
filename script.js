@@ -204,11 +204,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index === 1) {
             const counters = currentSlideElement.querySelectorAll('.counter-animation');
             counters.forEach((counter, i) => {
-                const value = parseInt(counter.dataset.value);
+                const targetValue = parseInt(counter.dataset.value);
                 const suffix = counter.dataset.suffix || '';
+                const startValue = 100; // Start from 100
 
-                // Reset to 0 and animate
-                counter.textContent = '0' + suffix;
+                // Reset to 100 and animate down to target
+                counter.textContent = startValue + suffix;
                 setTimeout(() => {
                     const duration = 1500; // Animation duration in ms
                     const startTime = Date.now();
@@ -219,14 +220,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // Easing function for smooth animation
                         const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-                        const current = Math.floor(value * easeOutQuart);
+                        // Count down from 100 to target value
+                        const current = Math.floor(startValue - (startValue - targetValue) * easeOutQuart);
 
                         counter.textContent = current + suffix;
 
                         if (progress < 1) {
                             requestAnimationFrame(updateCounter);
                         } else {
-                            counter.textContent = value + suffix;
+                            counter.textContent = targetValue + suffix;
                         }
                     }
                     updateCounter();
