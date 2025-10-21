@@ -269,41 +269,92 @@
             <p class="slide-subtitle">Our solution directly addresses the core consumer needs by being built on four synergistic pillars.</p>
 
             <div class="mt-16 max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Pillar 1 -->
-                <div class="card-bg pillar-card p-10 lg:p-12 rounded-2xl text-center flex flex-col items-center">
-                    <div class="bg-blue-500/20 p-4 rounded-full mb-4 pillar-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00aaff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.7 7.7a2.5 2.5 0 1 1-5 0"/><path d="M12.5 12.5a2.5 2.5 0 1 1-5 0"/><path d="M15 15a2.5 2.5 0 1 0 0-5"/><path d="M12.5 17.5a2.5 2.5 0 1 0 5 0"/><path d="m5 15 7.5-7.5"/></svg>
+                <!-- Pillar 1: Smart FX Engine -->
+                <div class="glass-pillar-card p-10 lg:p-12 rounded-2xl text-center flex flex-col items-center group">
+                    <div class="pillar-icon-container bg-gradient-to-br from-blue-500/20 to-cyan-500/20 p-5 rounded-full mb-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-blue-500/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#gradient-fx)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <defs>
+                                <linearGradient id="gradient-fx" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00aaff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 2v20"/>
+                            <path d="M2 12h20"/>
+                            <path d="M8 15l3-3-3-3"/>
+                            <path d="M16 9l-3 3 3 3"/>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-semibold text-white mb-2">Smart FX Engine</h3>
-                    <p class="text-gray-400 text-sm flex-grow">Tackles cost and clarity concerns with real-time comparisons and smart multi-currency wallets.</p>
-                    <div class="mt-4 pt-4 border-t border-white/10 w-full"><span class="text-xs font-bold gotham-brand tracking-widest uppercase">STRAIGHTFORWARD</span></div>
+                    <p class="text-gray-400 text-sm flex-grow leading-relaxed">Tackles cost and clarity concerns with real-time comparisons and smart multi-currency wallets.</p>
+                    <div class="mt-4 pt-4 border-t border-white/10 w-full">
+                        <span class="text-xs font-bold text-blue-400 tracking-widest uppercase pillar-badge">STRAIGHTFORWARD</span>
+                    </div>
                 </div>
-                <!-- Pillar 2 -->
-                <div class="card-bg pillar-card p-10 lg:p-12 rounded-2xl text-center flex flex-col items-center">
-                    <div class="bg-blue-500/20 p-4 rounded-full mb-4 pillar-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00aaff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h12"/><path d="M12 18V6"/><path d="M17 9.5a2.5 2.5 0 0 1 0 5h-10a2.5 2.5 0 0 0 0-5h10a2.5 2.5 0 0 1 0 5h-10a2.5 2.5 0 0 0 0-5Z"/><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"/></svg>
+
+                <!-- Pillar 2: Globe Goals -->
+                <div class="glass-pillar-card p-10 lg:p-12 rounded-2xl text-center flex flex-col items-center group">
+                    <div class="pillar-icon-container bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-5 rounded-full mb-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-purple-500/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#gradient-goals)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <defs>
+                                <linearGradient id="gradient-goals" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#9333ea;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+                            <path d="M9 5a2 2 0 002 2h2a2 2 0 002-2"/>
+                            <path d="M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                            <path d="m9 14 2 2 4-4"/>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-semibold text-white mb-2">Globe Goals</h3>
-                    <p class="text-gray-400 text-sm flex-grow">A gamified layer of geo-based quests and shareable badges that makes spending fun and engaging.</p>
-                    <div class="mt-4 pt-4 border-t border-white/10 w-full"><span class="text-xs font-bold gotham-brand tracking-widest uppercase">DISTINCTIVELY FUN</span></div>
+                    <p class="text-gray-400 text-sm flex-grow leading-relaxed">A gamified layer of geo-based quests and shareable badges that makes spending fun and engaging.</p>
+                    <div class="mt-4 pt-4 border-t border-white/10 w-full">
+                        <span class="text-xs font-bold text-purple-400 tracking-widest uppercase pillar-badge">DISTINCTIVELY FUN</span>
+                    </div>
                 </div>
-                <!-- Pillar 3 -->
-                <div class="card-bg pillar-card p-10 lg:p-12 rounded-2xl text-center flex flex-col items-center">
-                    <div class="bg-blue-500/20 p-4 rounded-full mb-4 pillar-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00aaff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+
+                <!-- Pillar 3: Concierge+ -->
+                <div class="glass-pillar-card p-10 lg:p-12 rounded-2xl text-center flex flex-col items-center group">
+                    <div class="pillar-icon-container bg-gradient-to-br from-green-500/20 to-emerald-500/20 p-5 rounded-full mb-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-green-500/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#gradient-concierge)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <defs>
+                                <linearGradient id="gradient-concierge" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="m9 12 2 2 4-4"/>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-semibold text-white mb-2">Concierge+</h3>
-                    <p class="text-gray-400 text-sm flex-grow">Alleviates security anxiety with 24/7 support and proactive alerts, reinforcing trust.</p>
-                    <div class="mt-4 pt-4 border-t border-white/10 w-full"><span class="text-xs font-bold gotham-brand tracking-widest uppercase">OUTSTANDING SERVICE</span></div>
+                    <p class="text-gray-400 text-sm flex-grow leading-relaxed">Alleviates security anxiety with 24/7 support and proactive alerts, reinforcing trust.</p>
+                    <div class="mt-4 pt-4 border-t border-white/10 w-full">
+                        <span class="text-xs font-bold text-green-400 tracking-widest uppercase pillar-badge">OUTSTANDING SERVICE</span>
+                    </div>
                 </div>
-                <!-- Pillar 4 -->
-                <div class="card-bg pillar-card p-10 lg:p-12 rounded-2xl text-center flex flex-col items-center">
-                    <div class="bg-blue-500/20 p-4 rounded-full mb-4 pillar-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00aaff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.78l1.21 1.21a1 1 0 0 0 1.42 0l1.21-1.21a4 4 0 0 1 4.78 4.78l-1.21 1.21a1 1 0 0 0 0 1.42l1.21 1.21a4 4 0 0 1-4.78 4.78l-1.21-1.21a1 1 0 0 0-1.42 0l-1.21 1.21a4 4 0 0 1-4.78-4.78l1.21-1.21a1 1 0 0 0 0-1.42z"/></svg>
+
+                <!-- Pillar 4: Rewards Loop -->
+                <div class="glass-pillar-card p-10 lg:p-12 rounded-2xl text-center flex flex-col items-center group">
+                    <div class="pillar-icon-container bg-gradient-to-br from-yellow-500/20 to-orange-500/20 p-5 rounded-full mb-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-yellow-500/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#gradient-rewards)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <defs>
+                                <linearGradient id="gradient-rewards" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#ef4444;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <polygon points="12 2 15 8.5 22 9.5 17 14.5 18.5 21.5 12 18 5.5 21.5 7 14.5 2 9.5 9 8.5"/>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-semibold text-white mb-2">Rewards Loop</h3>
-                    <p class="text-gray-400 text-sm flex-grow">Instant cashback and XP notifications create a powerful, positive feedback loop, making banking rewarding.</p>
-                    <div class="mt-4 pt-4 border-t border-white/10 w-full"><span class="text-xs font-bold gotham-brand tracking-widest uppercase">REWARDING</span></div>
+                    <p class="text-gray-400 text-sm flex-grow leading-relaxed">Instant cashback and XP notifications create a powerful, positive feedback loop, making banking rewarding.</p>
+                    <div class="mt-4 pt-4 border-t border-white/10 w-full">
+                        <span class="text-xs font-bold text-yellow-400 tracking-widest uppercase pillar-badge">REWARDING</span>
+                    </div>
                 </div>
             </div>
         </section>
