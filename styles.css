@@ -318,6 +318,28 @@ body::before {
 .icon-float:nth-child(3) { animation-delay: 1s; }
 .icon-float:nth-child(4) { animation-delay: 1.5s; }
 
+/* Custom bullet point styles */
+.custom-bullet-red {
+    box-shadow: 0 0 6px rgba(239, 68, 68, 0.6);
+    animation: bulletPulse 2s ease-in-out infinite;
+}
+
+.custom-bullet-green {
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
+    animation: bulletPulse 2s ease-in-out infinite;
+}
+
+@keyframes bulletPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
 /* Marketing cards - number bounce */
 .marketing-card .card-number {
     display: inline-block;

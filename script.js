@@ -200,6 +200,40 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // Counter animations for slide 2 (The Challenge & Opportunity)
+        if (index === 1) {
+            const counters = currentSlideElement.querySelectorAll('.counter-animation');
+            counters.forEach((counter, i) => {
+                const value = parseInt(counter.dataset.value);
+                const suffix = counter.dataset.suffix || '';
+
+                // Reset to 0 and animate
+                counter.textContent = '0' + suffix;
+                setTimeout(() => {
+                    const duration = 1500; // Animation duration in ms
+                    const startTime = Date.now();
+
+                    function updateCounter() {
+                        const elapsed = Date.now() - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+
+                        // Easing function for smooth animation
+                        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                        const current = Math.floor(value * easeOutQuart);
+
+                        counter.textContent = current + suffix;
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = value + suffix;
+                        }
+                    }
+                    updateCounter();
+                }, 300 + (i * 200)); // Stagger the animations
+            });
+        }
+
         // Counter animations for KPIs slide
         if (currentSlideElement.id === 'marketing-kpis') {
             const counters = [
